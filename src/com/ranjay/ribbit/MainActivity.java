@@ -1,23 +1,24 @@
 package com.ranjay.ribbit;
 
-import java.util.Locale;
+import java.io.File;
 
 import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
@@ -25,6 +26,75 @@ import com.parse.ParseUser;
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
 	public static final String TAG = MainActivity.class.getSimpleName();
+	public static final int TAKE_PHOTO_REQUEST = 0;
+	public static final int TAKE_VIDEO_REQUEST = 1;
+	public static final int PICK_PHOTO_REQUEST = 2;
+	public static final int PICK_VIDEO_REQUEST = 3;
+	
+	public static final int MEDIA_TYPE_IMAGE = 4;
+	public static final int MEDIA_TYPE_VIDEO = 5;
+	
+	protected Uri mMediaUri;
+	
+	// Creating a dialog listner to pass into the alert dialog which displays the options to click on
+	protected DialogInterface.OnClickListener mDialogLister = new DialogInterface.OnClickListener() {
+		
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			// which contains the item clicked on
+			switch(which){
+				case 0: //Take Picture
+					Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+					mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+					if(mMediaUri == null){
+						Toast.makeText(MainActivity.this, R.string.error_external_storeage
+								, Toast.LENGTH_LONG).show();;
+					}
+					takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
+					startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
+					break;
+				case 1: // Take Video
+					break;
+				case 2: // Choose picture
+					break;
+				case 3: // Choose Video
+					break;
+				
+			}
+			
+		}
+
+		private Uri getOutputMediaFileUri(int mediaTypeImage) {
+			 // To be safe, you should check that the SDCard is mounted
+		    // using Environment.getExternalStorageState() before doing this.
+			String appName = MainActivity.this.getString(R.string.app_name);
+			if(isExternalStoreageAvailable()){
+				//1.Get the external storeage directory
+				File mediaStoreageDir = new File(
+						Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),appName);
+				
+				//2. create our subdirectory
+			
+				//3. create the file name
+				//4. create file
+				//5. Return the file's URI
+				return null;
+			}else{
+				return null;
+			}
+		}
+		
+		private boolean isExternalStoreageAvailable(){
+			String state = Environment.getExternalStorageState();
+			
+			if(state.equals(Environment.MEDIA_MOUNTED)){
+				return true;
+			}else{
+				return false;
+			}
+			
+		}
+	};
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -116,18 +186,27 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_logout) {
-			ParseUser.logOut();
-			navigateToLogin();
-			return true;
-		}
-		else if ( id == R.id.action_edit_friends){
+		switch(id){
+		case R.id.action_edit_friends:
 			Intent intent = new Intent(this, EditFriendsActivity.class);
 			/*intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 			*/
 			startActivity(intent);
+			break;
+		case R.id.action_logout:
+			ParseUser.logOut();
+			navigateToLogin();
+			break;
+		case R.id.action_camera:
+			AlertDialog.Builder builder= new AlertDialog.Builder(this);
+			builder.setItems(R.array.camera_choices, mDialogLister);
+			AlertDialog dialog = builder.create();
+			dialog.show();
+			break;
+			
 		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
