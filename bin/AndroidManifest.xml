@@ -21,8 +21,11 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.ranjay.ribbit.permission.C2D_MESSAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-feature android:required="true" android:name="android.hardware.camera"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:name=".RibbitApplication"
@@ -74,8 +77,38 @@
         <activity
             android:name=".EditFriendsActivity"
             android:label="@string/title_activity_edit_friends"
-            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ranjay.ribbit.MainActivity" />
+        </activity>
+        <activity
+            android:name=".FriendsActivity"
+            android:label="@string/title_activity_friends" >
+        </activity>
+        <activity
+            android:name=".RecipientsActivity"
+            android:label="@string/title_activity_recipients"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ranjay.ribbit.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ChatMessaging"
+            android:label="@string/title_activity_chat_messaging"
             android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ranjay.ribbit.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ViewImagectivity"
+            android:label="@string/title_activity_view_imagectivity"
+            android:parentActivityName=".MainActivity" 
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ranjay.ribbit.MainActivity" />

@@ -27,12 +27,30 @@
     <string name="error_title">We\'re sorry</string>
     <string name="menu_camera_label">Camera</string>
     <string name="error_external_storeage"> There was a problem accessing your device external storeage</string>
+    <string name="general_error">Sorry, there was an error</string>
+    <string name="chat"> Chat </string>
+
     <string-array name="camera_choices">
-        <item >Take Picture</item>
-        <item >Take Video</item>
-        <item >Choose Picture</item>
-        <item >Choose Video</item>
-        
+        <item>Take Picture</item>
+        <item>Take Video</item>
+        <item>Choose Picture</item>
+        <item>Choose Video</item>
     </string-array>
+
+    <string name="title_activity_friends">Friends</string>
+    <string name="video_file_size_warning">The selected video must be less than 10 MB.</string>
+    <string name="error_opening_file">There was a problem with the selected file</string>
+    <string name="error_file_size">The selected file is too large select a new file</string>
+    <string name="title_activity_recipients">Choose Recipientes</string>
+    <string name="empty_recipients_list_message">Choose some Friends first</string>
+    <string name="menu_send_label">Send</string>
+    <string name="error_selecting_file">there was an error withthe file selected please select another file</string>
+    <string name="error_selecting_file_title">We\'re sorry</string>
+    <string name="success_message">Message Sent</string>
+    <string name="error_sending_message">There was an error sending your message please try again</string>
+    <string name="title_activity_chat_messaging">Send Message</string>
+    <string name="enter_sms_hint">Enter Message to send</string>
+    <string name="send_message">"Send "</string>
+    <string name="title_activity_view_imagectivity">Ribbit</string>
 
 </resources>
