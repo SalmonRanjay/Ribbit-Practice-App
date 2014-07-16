@@ -1,11 +1,14 @@
 package com.ranjay.ribbit;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 public class ViewImagectivity extends Activity {
 
@@ -16,24 +19,20 @@ public class ViewImagectivity extends Activity {
 		
 		ImageView imageView = (ImageView)findViewById(R.id.imageView);
 		Uri imageUri = getIntent().getData();
+		// using picasso image library
+		Picasso.with(this).load(imageUri.toString()).into(imageView);
+		
+		// creating a timer
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				finish();
+				
+			}
+		}, 10*1000);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.view_imagectivity, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+	
 }
