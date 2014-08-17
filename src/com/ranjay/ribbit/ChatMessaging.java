@@ -1,5 +1,8 @@
 package com.ranjay.ribbit;
 
+import com.ranjay.ribbit.ui.RecipientsActivity;
+import com.ranjay.ribbit.utils.ParseConstants;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

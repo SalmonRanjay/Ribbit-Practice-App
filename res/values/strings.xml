@@ -10,11 +10,11 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
-    <string name="login_button_text">Login</string>
-    <string name="sign_up_text">Sign up</string>
+    <string name="login_button_text">Sign in</string>
+    <string name="sign_up_text">Don\'t have an account? sign up!</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="email_hint">Email</string>
-    <string name="sign_up_button_label">Sign Up</string>
+    <string name="sign_up_button_label">SIGN UP</string>
     <string name="signup_error_message">Please make sure you enter a username, email and password</string>
     <string name="signup_error_title">OOPS</string>
     <string name="login_error_message">Please make sure you enter a username and password</string>
@@ -29,6 +29,7 @@
     <string name="error_external_storeage"> There was a problem accessing your device external storeage</string>
     <string name="general_error">Sorry, there was an error</string>
     <string name="chat"> Chat </string>
+    <string name="sign_up_button_cancel"> CANCEL</string>
 
     <string-array name="camera_choices">
         <item>Take Picture</item>
@@ -52,5 +53,12 @@
     <string name="enter_sms_hint">Enter Message to send</string>
     <string name="send_message">"Send "</string>
     <string name="title_activity_view_imagectivity">Ribbit</string>
+    <string name="content_desc_background_image">Ribbit Frog background Image</string>
+    <string name="subtitle">Example Project</string>
+    <string name="content_desc_divider">ButtonDivider</string>
+    <string name="content_desc_message_icon">message icon</string>
+    <string name="content_desc_user_avatar">User avatar</string>
+    <string name="content_desc_user_checkmark">checkmark avatar</string>
+    <string name="push_message">You have a new Ribbit Message from %s</string>
 
 </resources>

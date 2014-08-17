@@ -32,9 +32,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.Ribbit" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.ranjay.ribbit.ui.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -44,15 +44,54 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.ranjay.ribbit.ui.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".SignUpActivity"
+            android:name="com.ranjay.ribbit.ui.SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName="com.ranjay.ribbit.ui.LoginActivity"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.ranjay.ribbit.ui.EditFriendsActivity"
+            android:label="@string/title_activity_edit_friends"
+            android:parentActivityName="com.ranjay.ribbit.ui.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ranjay.ribbit.MainActivity" />
+        </activity>
+        <activity
+            android:name=".FriendsActivity"
+            android:label="@string/title_activity_friends" >
+        </activity>
+        <activity
+            android:name="com.ranjay.ribbit.ui.RecipientsActivity"
+            android:label="@string/title_activity_recipients"
+            android:parentActivityName="com.ranjay.ribbit.ui.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ranjay.ribbit.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ChatMessaging"
+            android:label="@string/title_activity_chat_messaging"
+            android:parentActivityName="com.ranjay.ribbit.ui.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ranjay.ribbit.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.ranjay.ribbit.ui.ViewImagectivity"
+            android:label="@string/title_activity_view_imagectivity"
+            android:parentActivityName="com.ranjay.ribbit.ui.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ranjay.ribbit.MainActivity" />
         </activity>
 
         <service android:name="com.parse.PushService" />
@@ -70,49 +109,10 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
+<!--       IMPORTANT: Change "com.parse.starter" to match your app's package name. -->
                 <category android:name="com.ranjay.ribbit" />
             </intent-filter>
         </receiver>
-
-        <activity
-            android:name=".EditFriendsActivity"
-            android:label="@string/title_activity_edit_friends"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ranjay.ribbit.MainActivity" />
-        </activity>
-        <activity
-            android:name=".FriendsActivity"
-            android:label="@string/title_activity_friends" >
-        </activity>
-        <activity
-            android:name=".RecipientsActivity"
-            android:label="@string/title_activity_recipients"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ranjay.ribbit.MainActivity" />
-        </activity>
-        <activity
-            android:name=".ChatMessaging"
-            android:label="@string/title_activity_chat_messaging"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ranjay.ribbit.MainActivity" />
-        </activity>
-        <activity
-            android:name=".ViewImagectivity"
-            android:label="@string/title_activity_view_imagectivity"
-            android:parentActivityName=".MainActivity" 
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ranjay.ribbit.MainActivity" />
-        </activity>
     </application>
 
 </manifest>
